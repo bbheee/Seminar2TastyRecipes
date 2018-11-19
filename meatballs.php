@@ -1,6 +1,8 @@
 <?php
     session_start();
     $_SESSION['page']="meatballs.php";
+    $cookbook = simplexml_load_file("recipes.xml");
+    $recipeNo= 1;
 
 ?>
 <!DOCTYPE html>
@@ -26,25 +28,23 @@
         </div>
     </header>
     <main>
-    <img src ="kottbullar.jpg" alt="meatballs" style="width: 250px;height: 150px;">
+    <img class= "image" src ="<?php echo $cookbook->recipe[$recipeNo]->imagepath; ?>"
+     /> <br/>
+    <?php echo $cookbook->recipe[$recipeNo]->quantity; ?> <br/>
+    <?php echo $cookbook->recipe[$recipeNo]->cooktime; ?> <br/>
     <h3><b> Ingredients:</b> </h3>
     <ul class= "ingredients">
-        <li> 1/2 dl breadcrumbs </li>   <li> 1 dl cream </li>
-        <li> 1/2 kg minced beef </li>
-        <li> 2 msk chopped onion </li>
-        <li> 1 egg </li>
-        <li> 1 tsk salt </li>
-        <li> 1 krm pepper </li>
-        <li> 1 tsk ground nutmeg</li>
-        <li> butter </li>
+        <?php foreach ($cookbook->recipe[$recipeNo]->ingredient->li as $ingredient){
+              echo "<li> $ingredient </li>";
+              }
+        ?>
     </ul>
     <h3><b> Steps:</b> </h3>
     <ol class= "steps">
-        <li> Mix bread and cream. Let swell. </li>
-        <li> Add the mince beef, onion, eggs, salt, pepper and nutmeg and stir until smooth.  </li>
-        <li> Roll into small buns, the smaller the better, and fry in butter. </li>
-        <li> Serve with mashed potatoes, lingon sauce and possibly cream sauce. </li>
-
+         <?php foreach ($cookbook->recipe[$recipeNo]->recipetext->li as $recipetext){
+                echo "<li> $recipetext </li>";
+              }
+        ?>
     </ol>
    <p><b>Comments</b></p>
    <?php

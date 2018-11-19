@@ -1,7 +1,8 @@
 <?php
     session_start();
     $_SESSION['page']="pancakes.php";
-
+    $cookbook = simplexml_load_file("recipes.xml");
+    $recipeNo= 0;
 ?>
 
 <!DOCTYPE html>
@@ -27,23 +28,23 @@
         </div>
     </header>
     <main>
-    <img src ="pannkakor.jpg" alt="pankakes" style="width: 250px;height: 150px;">
+      <img class= "image" src ="<?php echo $cookbook->recipe[$recipeNo]->imagepath; ?>"
+       /> <br/>
+      <?php echo $cookbook->recipe[$recipeNo]->quantity; ?> <br/>
+      <?php echo $cookbook->recipe[$recipeNo]->cooktime; ?> <br/>
     <h3><b> Ingredients:</b> </h3>
     <ul class= "ingredients">
-        <li> 3 eggs </li>
-        <li> 5 dl milk </li>
-        <li> 5 dl of wheat flour </li>
-        <li> 2 tsk baking powder </li>
-        <li> 1 tsk salt </li>
-        <li> 1 msk sugar </li>
+      <?php foreach ($cookbook->recipe[$recipeNo]->ingredient->li as $ingredient){
+            echo "<li> $ingredient </li>";
+            }
+      ?>
     </ul>
     <h3> <b> Steps:</b> </h3>
     <ol class= "steps">
-        <li> Crack the eggs and divide the yolks and whites. Whisk the egg yolks with the milk. </li>
-        <li> Mix all the dry ingredients and sift them in egg and milk mixture.  Beat until smooth.  </li>
-        <li>  Hard-wipe the egg whites and gently turn into the batter. Let swell for half an hour.  </li>
-        <li> Fry the pancakes of about 10-12 cm in diameter on a low heat until they become thick and airy. </li>
-        <li> Serve with fresh berries and maple syrup. Sprinkle with a bit sugar if you want. </li>
+      <?php foreach ($cookbook->recipe[$recipeNo]->recipetext->li as $recipetext){
+            echo "<li> $recipetext </li>";
+            }
+      ?>
     </ol>
         <p><b>Comments</b></p>
     <?php

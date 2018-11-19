@@ -6,6 +6,9 @@
 
     <recipe>
         <title>Pancakes</title>
+        <imagepath>pannkakor.jpg</imagepath>
+        <quantity>3–4 portions</quantity>
+        <cooktime>Cooktime: 20 min</cooktime>
         <ingredient>
             <li>3 eggs</li>
             <li>5 dl milk</li>
@@ -20,10 +23,14 @@
             <li>Hard-wipe the egg whites and gently turn into the batter. Let swell for half an hour.</li>
             <li>Fry the pancakes of about 10-12 cm in diameter on a low heat until they become thick and airy.</li>
             <li>Serve with fresh berries and maple syrup. Sprinkle with a bit sugar if you want.</li>
+        </recipetext>
     </recipe>
 
     <recipe>
         <title>Meatballs</title>
+        <imagepath>kottbullar.jpg</imagepath>
+        <quantity>4 portions</quantity>
+        <cooktime>Cooktime: 1 hour</cooktime>
         <ingredient>
             <li>1/2 dl breadcrumbs</li>
             <li>1 dl cream</li>
